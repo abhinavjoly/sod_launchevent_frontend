@@ -1,0 +1,35 @@
+# ── Python / Flask ──────────────────────────
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+env/
+venv/
+.venv/
+*.env
+*.sqlite3
+sod_club.db
+
+# ── Node / React ─────────────────────────────
+node_modules/
+build/
+dist/
+.cache/
+*.log
+npm-debug.log*
+
+# ── OS ───────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editor ───────────────────────────────────
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# ── Env files ────────────────────────────────
+.env
+.env.local
+.env.production
