@@ -670,7 +670,9 @@ function Dashboard({ user, quizEnabled, onNav, onStartQuiz }) {
   );
 }
 
-// ─── QUIZ ENGINE ──────────────────────────────────────────────────
+// Modified this since this never sent the score as a JSON to /api/quiz/score. @ayushkelkar
+// However, I used AI so it might be wrong, idk.
+// ─── QUIZ ENGINE WITH PROPER "SEE RESULTS" BUTTON ───────────────────────────────
 function QuizPage({ user, token, onNav }) {
   const [idx, setIdx] = useState(0);
   const [score, setScore] = useState(0);
@@ -680,6 +682,22 @@ function QuizPage({ user, token, onNav }) {
   const LABELS = ["A", "B", "C", "D"];
   const q = QUIZ_QUESTIONS[idx];
 
+  // API helper
+  const API = {
+    submitScore: async ({ score, total }, token) => {
+      const res = await fetch("http://127.0.0.1:5000/api/quiz/score", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": `Bearer ${token}`
+        },
+        body: JSON.stringify({ score, total })
+      });
+      if (!res.ok) throw new Error(`Server error: ${res.status}`);
+      return await res.json();
+    }
+  };
+
   function pick(j) {
     if (answered) return;
     setAnswered(true);
@@ -688,21 +706,34 @@ function QuizPage({ user, token, onNav }) {
   }
 
   function next() {
-    if (idx + 1 >= QUIZ_QUESTIONS.length) finish();
-    else { setIdx(i => i + 1); setAnswered(false); setChosen(null); }
+    setIdx(i => i + 1);
+    setAnswered(false);
+    setChosen(null);
   }
 
-  async function finish() {
+  async function submit() {
+    // Only called by "SEE RESULTS →"
     const finalScore = score + (chosen === q.a ? 1 : 0);
-    setDone(true);
     try {
       await API.submitScore({ score: finalScore, total: QUIZ_QUESTIONS.length }, token);
-    } catch { /* score submission failed silently */ }
+      console.log("Score submitted:", finalScore);
+    } catch (err) {
+      console.error("Score submission failed:", err);
+    } finally {
+      setDone(true); // render results page
+    }
   }
 
-  if (done || (answered && idx + 1 >= QUIZ_QUESTIONS.length && chosen !== null)) {
+  // Results page
+  if (done) {
     const finalScore = score + (chosen === q.a ? 1 : 0);
-    const msgs = ["Keep studying — review your notes! 📖", "Not bad, keep pushing! 💡", "Solid performance! ⚡", "Impressive! Leaderboard material. 🔬", "PERFECT SCORE! Photon Master! 🏆"];
+    const msgs = [
+      "Keep studying — review your notes! 📖",
+      "Not bad, keep pushing! 💡",
+      "Solid performance! ⚡",
+      "Impressive! Leaderboard material. 🔬",
+      "PERFECT SCORE! Photon Master! 🏆"
+    ];
     const tier = finalScore <= 2 ? 0 : finalScore <= 4 ? 1 : finalScore <= 6 ? 2 : finalScore <= 8 ? 3 : 4;
     return (
       <div className="page">
@@ -720,6 +751,7 @@ function QuizPage({ user, token, onNav }) {
     );
   }
 
+  // Quiz page
   return (
     <div className="page">
       <div className="qw">
@@ -742,7 +774,8 @@ function QuizPage({ user, token, onNav }) {
               <button
                 key={j}
                 className={`opt ${answered && j === q.a ? "correct" : ""} ${answered && j === chosen && j !== q.a ? "wrong" : ""}`}
-                onClick={() => pick(j)} disabled={answered}
+                onClick={() => pick(j)}
+                disabled={answered}
               >
                 <span className="ol">{LABELS[j]}</span>{o}
               </button>
@@ -754,10 +787,14 @@ function QuizPage({ user, token, onNav }) {
             </div>
           )}
         </div>
+
+        {/* Button logic */}
         {answered && (
-          <button className="nxt-btn" onClick={next}>
-            {idx + 1 < QUIZ_QUESTIONS.length ? "NEXT →" : "SEE RESULTS →"}
-          </button>
+          idx + 1 < QUIZ_QUESTIONS.length ? (
+            <button className="nxt-btn" onClick={next}>NEXT →</button>
+          ) : (
+            <button className="nxt-btn" onClick={submit}>SEE RESULTS →</button>
+          )
         )}
       </div>
     </div>
