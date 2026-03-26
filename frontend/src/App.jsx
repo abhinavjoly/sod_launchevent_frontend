@@ -8,7 +8,7 @@ const BMS_LOGO = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAB4cAAAIcCAYAAAD1
 // ─── API CONFIG ───────────────────────────────────────────────────
 // Replace BASE_URL with your backend's base URL when ready
 const API = {
-  BASE_URL: "http://localhost:5000/api",  // Proxy to http://localhost:5000 — see vite.config.js, This also didn't have a comma there :/ Fixed it. @ayush
+  BASE_URL: "https://sod-launchevent-backend.onrender.com/api",
   register: (data) => fetch(`${API.BASE_URL}/auth/register`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
   login:    (data) => fetch(`${API.BASE_URL}/auth/login`,    { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
   getUsers: (token) => fetch(`${API.BASE_URL}/admin/users`,  { headers: { Authorization: `Bearer ${token}` } }),
@@ -685,7 +685,7 @@ function QuizPage({ user, token, onNav }) {
   // API helper
   const API = {
     submitScore: async ({ score, total }, token) => {
-      const res = await fetch("http://127.0.0.1:5000/api/quiz/score", {
+      const res = await fetch("https://sod-launchevent-backend.onrender.com/api/quiz/score", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
