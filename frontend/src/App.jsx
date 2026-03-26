@@ -779,11 +779,7 @@ function QuizPage({ user, token, onNav }) {
               </button>
             ))}
           </div>
-          {answered && (
-            <div className={`fb ${chosen === q.a ? "ok" : "no"}`}>
-              {chosen === q.a ? "✓ Correct! " : "✗ Incorrect. "}{q.ex}
-            </div>
-          )}
+          // deleted feedbacks during quiz.
         </div>
 
         {/* Button logic */}
