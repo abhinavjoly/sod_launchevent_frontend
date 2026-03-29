@@ -404,7 +404,7 @@ function Header({ page, user, isAdmin, onNav, onLogout }) {
           <h1>SEMICONDUCTORS FOR OPTOELECTRONIC DEVICES</h1>
           <p>RESEARCH · INDUSTRIAL CONNECT · ENGINEER</p>
         </div>
-       <!-- <img src={BMS_LOGO} alt="BMSIT & M Logo" className="hlogo-bms" /> -->
+       
       </div>
       <nav className="hn">
         {!user && !isAdmin && (
