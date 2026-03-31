@@ -22,18 +22,17 @@ const API = {
 const ADMIN_USER = "user-Joly";
 const ADMIN_PASS = "SOD_007";
 
-// ─── PLACEHOLDER QUIZ QUESTIONS ──────────────────────────────────
 const QUIZ_QUESTIONS = [
-  { q: "What is the bandgap of Silicon at room temperature?", o: ["0.67 eV", "1.12 eV", "1.42 eV", "3.37 eV"], a: 1, ex: "Silicon has a bandgap of ~1.12 eV at 300K, making it ideal for solar cells and transistors." },
-  { q: "Which type of semiconductor has more holes than electrons?", o: ["N-type", "Intrinsic", "P-type", "Degenerate"], a: 2, ex: "P-type semiconductors are doped with acceptor atoms, creating an excess of holes as majority carriers." },
-  { q: "What does MOSFET stand for?", o: ["Metal Oxide Silicon Field Effect Transistor", "Metal Oxide Semiconductor Field Effect Transistor", "Modulated Output Semiconductor Field Emission Transistor", "Metal Organic Semiconductor Field Effect Transistor"], a: 1, ex: "MOSFET = Metal Oxide Semiconductor Field Effect Transistor, the backbone of modern VLSI." },
-  { q: "The depletion region in a p-n junction is formed due to:", o: ["Drift current", "Recombination of carriers", "External electric field", "Temperature gradient"], a: 1, ex: "Electrons from n-side and holes from p-side recombine near the junction, creating an ion-charged depletion region." },
-  { q: "Which law governs the ideal diode equation?", o: ["Ohm's Law", "Kirchhoff's Law", "Shockley Diode Equation", "Maxwell's Law"], a: 2, ex: "The Shockley diode equation I = I₀(e^(V/nVt) - 1) models ideal p-n junction behavior." },
-  { q: "What is Moore's Law?", o: ["Transistor count halves every 2 years", "Transistor count doubles every ~2 years", "CPU speed doubles every year", "Power consumption halves every 18 months"], a: 1, ex: "Moore's Law (1965) predicts transistor density doubles roughly every 2 years, driving miniaturization." },
-  { q: "Hall effect is used to determine:", o: ["Bandgap energy", "Carrier concentration and type", "Junction capacitance", "Diffusion length"], a: 1, ex: "The Hall effect reveals carrier type (n or p) and concentration via the Hall voltage generated in a magnetic field." },
-  { q: "Which material has the highest electron mobility at room temperature?", o: ["Silicon", "Germanium", "Gallium Arsenide", "Indium Antimonide"], a: 3, ex: "InSb has the highest electron mobility (~77,000 cm²/Vs) due to its very small effective mass." },
-  { q: "Zener breakdown occurs due to:", o: ["High temperature", "Quantum tunneling through thin depletion layer", "Avalanche multiplication", "Recombination"], a: 1, ex: "Zener breakdown occurs in heavily doped junctions via quantum tunneling — different from avalanche breakdown." },
-  { q: "The Early effect in BJTs refers to:", o: ["Base width modulation with collector voltage", "Emitter injection efficiency decrease", "Collector current saturation", "Base-emitter capacitance increase"], a: 0, ex: "The Early effect: as VCE increases, depletion region widens into base, effectively modulating base width and increasing IC." },
+  { q: "What is the bandgap of Silicon at room temperature?", a: "1.12 eV" },
+  { q: "Which type of semiconductor has more holes than electrons?", a: "P-type" },
+  { q: "What does MOSFET stand for?", a: "Metal Oxide Semiconductor Field Effect Transistor" },
+  { q: "The depletion region in a p-n junction is formed due to:", a: "Recombination of carriers" },
+  { q: "Which law governs the ideal diode equation?", a: "Shockley Diode Equation" },
+  { q: "What is Moore's Law?", a: "Transistor count doubles every ~2 years" },
+  { q: "Hall effect is used to determine:", a: "Carrier concentration and type" },
+  { q: "Which material has the highest electron mobility at room temperature?", a: "Indium Antimonide" },
+  { q: "Zener breakdown occurs due to:", a: "Quantum tunneling through thin depletion layer" },
+  { q: "The Early effect in BJTs refers to:", a: "Base width modulation with collector voltage" },
 ];
 
 // ─── CSS STYLES ───────────────────────────────────────────────────
