@@ -677,7 +677,6 @@ function QuizPage({ user, token, onNav }) {
   const [userAnswer, setUserAnswer] = useState("");
   const [submitted, setSubmitted] = useState(false);
   const [done, setDone] = useState(false);
-  const LABELS = ["A", "B", "C", "D"];
   const q = QUIZ_QUESTIONS[idx];
 
   // API helper
