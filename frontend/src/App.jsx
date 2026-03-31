@@ -794,7 +794,7 @@ function handleSubmitAnswer() {
     {idx + 1 < QUIZ_QUESTIONS.length ? "NEXT →" : "SUBMIT →"}
   </button>
 ) : (
-  <button className="nxt-btn" onClick={next}>
+  <button className="nxt-btn" onClick={idx + 1 < QUIZ_QUESTIONS.length ? next : submit}>
     {idx + 1 < QUIZ_QUESTIONS.length ? "NEXT →" : "SEE RESULTS →"}
   </button>
 )}
