@@ -698,7 +698,7 @@ function QuizPage({ user, token, onNav }) {
   
 
   function next() {
-  if (idx + 1 >= QUIZ_QUESTIONS.length) finish();
+  if (idx + 1 >= QUIZ_QUESTIONS.length) submit();
   else { setIdx(i => i + 1); setUserAnswer(""); setSubmitted(false); }
 }
 
