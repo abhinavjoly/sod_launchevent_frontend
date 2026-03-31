@@ -711,7 +711,7 @@ function handleSubmitAnswer() {
 }
   async function submit() {
     // Only called by "SEE RESULTS →"
-    const finalScore = score;
+    const finalScore = score + (userAnswer.trim().toLowerCase() === q.a.toLowerCase() ? 1 : 0);
     try {
       await API.submitScore({ score: finalScore, total: QUIZ_QUESTIONS.length }, token);
       console.log("Score submitted:", finalScore);
@@ -724,7 +724,7 @@ function handleSubmitAnswer() {
 
   // Results page
   if (done) {
-    const finalScore = score;
+    const finalScore = score + (userAnswer.trim().toLowerCase() === q.a.toLowerCase() ? 1 : 0);
     const msgs = [
       "Keep studying — review your notes! 📖",
       "Not bad, keep pushing! 💡",
