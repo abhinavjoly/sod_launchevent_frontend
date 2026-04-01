@@ -8,7 +8,7 @@ const SOD_LOGO = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAYGBgY
 // ─── API CONFIG ───────────────────────────────────────────────────
 // Replace BASE_URL with your backend's base URL when ready
 const API = {
-  BASE_URL: "https://sod-launchevent-backend.onrender.com/api",  // Vite proxies this to http://localhost:5000 — see vite.config.js,
+  BASE_URL: "http://localhost:5000/api",  // Vite proxies this to http://localhost:5000 — see vite.config.js,
   register: (data) => fetch(`${API.BASE_URL}/auth/register`, { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
   login:    (data) => fetch(`${API.BASE_URL}/auth/login`,    { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(data) }),
   getUsers: (token) => fetch(`${API.BASE_URL}/admin/users`,  { headers: { Authorization: `Bearer ${token}` } }),
@@ -681,7 +681,7 @@ function QuizPage({ user, token, onNav }) {
   // API helper
   const API = {
     submitScore: async ({ score, total }, token) => {
-      const res = await fetch("https://sod-launchevent-backend.onrender.com/api/quiz/score", {
+      const res = await fetch("http:/localhost:5000/api/quiz/score", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

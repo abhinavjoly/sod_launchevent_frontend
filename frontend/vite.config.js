@@ -9,7 +9,7 @@ export default defineConfig({
     // so you don't hit CORS issues
     proxy: {
       '/api': {
-        target: 'https://sod-launchevent-backend.onrender.com', // I don't exactly know what to do here so you might wanna crosscheck this line @abhinav
+        target: 'https://localhost:5000', // I don't exactly know what to do here so you might wanna crosscheck this line @abhinav
         changeOrigin: true,
       }
     }
