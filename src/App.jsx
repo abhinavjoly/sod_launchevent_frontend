@@ -502,8 +502,8 @@ function LandingPage({ onNav }) {
           <button className="btn-primary" onClick={() => onNav("register")}>REGISTER TEAM</button>
           <button className="btn-outline" onClick={() => onNav("login")}>LOGIN</button>
         </div>
-        <div className="land-stats">
-          <div className="stat-box"><div className="num">10</div><div className="lbl">QUESTIONS</div></div>
+          <div className="land-stats">
+          <div className="stat-box"><div className="num">3</div><div className="lbl">QUESTIONS</div></div>
           <div className="stat-box"><div className="num">∞</div><div className="lbl">KNOWLEDGE</div></div>
           <div className="stat-box"><div className="num">1</div><div className="lbl">LEADERBOARD</div></div>
         </div>
